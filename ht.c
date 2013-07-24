@@ -6,7 +6,7 @@
 ht_t* ht_ctor(int capacity){
 	ht_t* ht=malloc(sizeof(ht_t));
 	ht->capacity=capacity;
-	ht->bucket=malloc(sizeof(int)*capacity);	
+	ht->bucket=malloc(sizeof(bucket_t)*capacity);	
 }
 
 void ht_dtor(ht_t* ht){
