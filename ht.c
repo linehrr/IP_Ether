@@ -2,15 +2,36 @@
 #include <stdlib.h>
 
 
-/*TODO this is a primitive version with no hash collision resolution yet*/
 ht_t* ht_ctor(int capacity){
 	ht_t* ht=malloc(sizeof(ht_t));
 	ht->capacity=capacity;
 	ht->bucket=malloc(sizeof(bucket_t)*capacity);	
+	/*TODO the for loop in ctor and dtor are not very efficient,
+	 * maybe I could implement this differently to make this more efficient
+	*/
+	int i;
+	for(i=0;i<capacity;i++){
+		ht->bucket[i]->next=NULL;
+	}
+
 }
 
 void ht_dtor(ht_t* ht){
-	/*TODO free each collision list in bucket*/
+	/*free each collision list in bucket*/
+	int capacity=ht->capacity;
+	int i;
+    for(i=0;i<capacity;i++){
+		bucket_t* pbucket=ht->bucket[i];
+		if(pbucket->next!=NULL){
+			pbucket=pbucket->next;/*solving the problem for the very first one*/
+			while(pbucket->next!=NULL){
+				bucket_t* tmp=pbucket;
+				pbucket=pbucket->next;
+				free(tmp);
+			}
+		}
+	}
+
 	free(ht->bucket);
 	free(ht);
 }

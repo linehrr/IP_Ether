@@ -5,9 +5,9 @@
 
 void test_ht_ctor(){
 	ht_t* ht=ht_ctor(20);
-	ht->bucket[1].data=1;	
+	ht->bucket[1]->data=1;	
 	
-	assert(ht->bucket[1].data==1);
+	assert(ht->bucket[1]->data==1);
     free(ht->bucket);
 
 	free(ht);	
@@ -16,9 +16,9 @@ void test_ht_ctor(){
 
 void test_ht_dtor(){
     ht_t* ht=ht_ctor(20);
-    ht->bucket[1].data=1;
+    ht->bucket[1]->data=1;
 
-    assert(ht->bucket[1].data==1);
+    assert(ht->bucket[1]->data==1);
 	ht_dtor(ht);
 }
 
