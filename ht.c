@@ -11,7 +11,8 @@ ht_t* ht_ctor(int capacity){
 	*/
 	int i;
 	for(i=0;i<capacity;i++){
-		ht->bucket[i]->next=NULL;
+        bucket_t* tmp=&(ht->bucket[i]);
+		tmp->next=NULL;
 	}
 
 }
@@ -21,7 +22,7 @@ void ht_dtor(ht_t* ht){
 	int capacity=ht->capacity;
 	int i;
     for(i=0;i<capacity;i++){
-		bucket_t* pbucket=ht->bucket[i];
+		bucket_t* pbucket=&(ht->bucket[i]);
 		if(pbucket->next!=NULL){
 			pbucket=pbucket->next;/*solving the problem for the very first one*/
 			while(pbucket->next!=NULL){
