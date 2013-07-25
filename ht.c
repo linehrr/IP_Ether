@@ -9,14 +9,23 @@ ht_t* ht_ctor(int capacity){
 	/*TODO the for loop in ctor and dtor are not very efficient,
 	 * maybe I could implement this differently to make this more efficient
 	*/
-	printf("capacity: %i \n", capacity);
-	int i=0;
+	int i;
 	for(i=0;i<capacity;i++){
         //bucket_t* tmp=&(ht->bucket[i]);//TODO temporary for debuggin
 		//tmp->next=NULL;
 	}
+	return ht;
+}
+
+
+void for_loop(int capacity){
+    printf("capacity: %i \n", capacity);
+    int i;
+    for(i=0;i<capacity;i++){
+    }
 
 }
+
 
 void ht_dtor(ht_t* ht){
 	/*free each collision list in bucket*/
