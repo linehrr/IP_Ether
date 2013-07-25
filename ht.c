@@ -1,18 +1,19 @@
 #include "ht.h"
 #include <stdlib.h>
-
+#include <stdio.h>
 
 ht_t* ht_ctor(int capacity){
 	ht_t* ht=malloc(sizeof(ht_t));
 	ht->capacity=capacity;
-	ht->bucket=malloc(sizeof(bucket_t)*capacity);	
+	//ht->bucket=malloc(sizeof(bucket_t)*capacity);	//TODO temporary for debuggin
 	/*TODO the for loop in ctor and dtor are not very efficient,
 	 * maybe I could implement this differently to make this more efficient
 	*/
-	int i;
+	printf("capacity: %i \n", capacity);
+	int i=0;
 	for(i=0;i<capacity;i++){
-        bucket_t* tmp=&(ht->bucket[i]);
-		tmp->next=NULL;
+        //bucket_t* tmp=&(ht->bucket[i]);//TODO temporary for debuggin
+		//tmp->next=NULL;
 	}
 
 }
@@ -20,11 +21,13 @@ ht_t* ht_ctor(int capacity){
 void ht_dtor(ht_t* ht){
 	/*free each collision list in bucket*/
 	int capacity=ht->capacity;
+
+/*
 	int i;
     for(i=0;i<capacity;i++){
 		bucket_t* pbucket=&(ht->bucket[i]);
 		if(pbucket->next!=NULL){
-			pbucket=pbucket->next;/*solving the problem for the very first one*/
+			pbucket=pbucket->next;
 			while(pbucket->next!=NULL){
 				bucket_t* tmp=pbucket;
 				pbucket=pbucket->next;
@@ -32,8 +35,9 @@ void ht_dtor(ht_t* ht){
 			}
 		}
 	}
+*/
 
-	free(ht->bucket);
+	//free(ht->bucket);//TODO for debugging
 	free(ht);
 }
 
