@@ -7,14 +7,14 @@ typedef struct bucket{
 }bucket_t;
 
 
-typedef struct ht_t{
+typedef struct ht{
     int count; /*count the number of buckets being used; 
 	            TODO dont need this for static ht
 				For dynamic ht, will need to update this*/	
     int capacity;/*number of buckets*/
 
     /*array holding value*/
-	bucket_t bucket;/*TODO For array in C, ther is a limit of how many elements could be stored. not sure if this would affect me*/
+	bucket_t* bucket;/*TODO For array in C, ther is a limit of how many elements could be stored. not sure if this would affect me*/
 }ht_t;
 
 

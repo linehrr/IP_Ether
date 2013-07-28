@@ -7,10 +7,10 @@ void test_ht_ctor(){
 	ht_t* ht=ht_ctor(20);
 
 //	bucket_t* tmp=&(ht->bucket[1]);
-	bucket_t tmp=ht->bucket;
-	tmp.data=1;
+	bucket_t* tmp=ht->bucket;
+	tmp->data=1;
 
-	printf("ht->bucket.data: %i\n", ht->bucket.data);	
+	printf("ht->bucket->data: %i\n", (ht->bucket)->data);	
     printf("ht->capacity: %i\n", ht->capacity);
 
 //	assert(ht->bucket.data==1);//not helpful anymore

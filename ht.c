@@ -9,11 +9,15 @@ ht_t* ht_ctor(int capacity){
 	/*TODO the for loop in ctor and dtor are not very efficient,
 	 * maybe I could implement this differently to make this more efficient
 	*/
+	ht->bucket=malloc(sizeof(bucket_t));//TODO only one bucket
+
+/*
 	int i;
 	for(i=0;i<capacity;i++){
-        //bucket_t* tmp=&(ht->bucket[i]);//TODO temporary for debuggin
-		//tmp->next=NULL;
+        bucket_t* tmp=&(ht->bucket[i]);//TODO temporary for debuggin
+		tmp->next=NULL;
 	}
+*/
 	return ht;
 }
 
