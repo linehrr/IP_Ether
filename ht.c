@@ -5,11 +5,11 @@
 ht_t* ht_ctor(int capacity){
 	ht_t* ht=malloc(sizeof(ht_t));
 	ht->capacity=capacity;
-	//ht->bucket=malloc(sizeof(bucket_t)*capacity);	//TODO temporary for debuggin
+	ht->bucket=malloc(sizeof(bucket_t)*capacity);	//TODO temporary for debuggin
 	/*TODO the for loop in ctor and dtor are not very efficient,
 	 * maybe I could implement this differently to make this more efficient
 	*/
-	ht->bucket=malloc(sizeof(bucket_t));//TODO only one bucket
+//	ht->bucket=malloc(sizeof(bucket_t));//TODO only one bucket
 
 /*
 	int i;
