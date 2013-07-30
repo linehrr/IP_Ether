@@ -24,7 +24,6 @@ ht_t* ht_ctor(int capacity){
 void ht_dtor(ht_t* ht){
 	/*free each collision list in bucket*/
 	int capacity=ht->capacity;
-/*
 	int i;
     for(i=0;i<capacity;i++){
 		bucket_t* pbucket=&(ht->bucket[i]);
@@ -37,7 +36,6 @@ void ht_dtor(ht_t* ht){
 			}
 		}
 	}
-*/
 	free(ht->bucket);
 	free(ht);
 }
