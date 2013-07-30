@@ -1,6 +1,7 @@
 #include "ht.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdint.h>
 
 ht_t* ht_ctor(int capacity){
 	ht_t* ht=malloc(sizeof(ht_t));
@@ -9,18 +10,21 @@ ht_t* ht_ctor(int capacity){
 	/*TODO the for loop in ctor and dtor are not very efficient,
 	 * maybe I could implement this differently to make this more efficient
 	*/
+	/*TODO check if ptr is initialized as NULL, if not specified*/
+/*
 	int i;
 	for(i=0;i<capacity;i++){
         bucket_t* tmp=&(ht->bucket[i]);
 		tmp->next=NULL;
 	}
+*/
 	return ht;
 }
 
 void ht_dtor(ht_t* ht){
 	/*free each collision list in bucket*/
 	int capacity=ht->capacity;
-
+/*
 	int i;
     for(i=0;i<capacity;i++){
 		bucket_t* pbucket=&(ht->bucket[i]);
@@ -33,8 +37,26 @@ void ht_dtor(ht_t* ht){
 			}
 		}
 	}
+*/
 	free(ht->bucket);
 	free(ht);
+}
+
+int ht_hash_mac(int mac){
+
+}
+
+
+int8_t get_last_32_bit(int32_t in){
+	int32_t result=0x00;
+	int32_t last_four_bit=0x0F;
+	result = in | last_four_bit;/*getting the last 4 bits*/
+	return result;
+}
+
+int32_t convert_mac_to_ip(int32_t mac){
+	int32_t result=get_last_32_bit(mac);
+	return result;
 }
 
 /*TODO for now, use MAC as key, and store IP in the table*/
